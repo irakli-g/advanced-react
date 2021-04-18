@@ -1,4 +1,10 @@
 import App from "./App";
 import ReactDOM from "react-dom";
+import { Root } from "./redux/Root";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Root>
+    <App />
+  </Root>,
+  document.getElementById("root")
+);
