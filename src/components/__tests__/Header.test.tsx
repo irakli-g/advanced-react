@@ -16,4 +16,8 @@ describe("Header component", () => {
     const elements = screen.getAllByRole("listitem");
     expect(elements).toHaveLength(2);
   });
+  test("should render sign in button", () => {
+    const button = screen.getByRole("button", { name: /sign (in|out)/i });
+    expect(button).toBeInTheDocument();
+  });
 });

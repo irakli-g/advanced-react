@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import { commentsReducer } from "./";
+import { commentsReducer, authReducer } from "./";
 
 export const rootReducer = combineReducers({
   comments: commentsReducer,
+  auth: authReducer,
 });

@@ -1,5 +1,5 @@
 import { commentsReducer } from "../";
-import { addCommentAction, fetchCommentsActions } from "../../actions/actionTypes";
+import { addCommentAction, fetchCommentsAction } from "../../actions/actionTypes";
 
 const data: CommentData = { id: 1, name: "comment one" };
 const mockAPI: CommentData[] = [
@@ -19,7 +19,7 @@ describe("commentsReducer", () => {
     expect(state.comments[0]).toEqual(data);
   });
   test("should handle FETCH_COMMENTS action", () => {
-    const action: fetchCommentsActions = {
+    const action: fetchCommentsAction = {
       type: "FETCH_COMMENTS",
       payload: mockAPI,
     };

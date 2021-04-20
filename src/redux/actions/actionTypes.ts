@@ -8,6 +8,18 @@ interface fetchCommentsAction {
   payload: CommentData[];
 }
 
-type CommentsActions = addCommentAction | fetchCommentsAction;
+interface switchAuthAction {
+  type: "SWITCH_AUTH";
+  payload: boolean;
+}
 
-export type { CommentsActions, addCommentAction, fetchCommentsAction };
+type CommentsActions = addCommentAction | fetchCommentsAction;
+type AuthActions = switchAuthAction;
+
+export type {
+  CommentsActions,
+  addCommentAction,
+  fetchCommentsAction,
+  AuthActions,
+  switchAuthAction,
+};

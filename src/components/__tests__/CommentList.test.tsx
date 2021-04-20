@@ -9,7 +9,7 @@ const mockData: CommentData[] = [
 ];
 
 describe("CommentList component", () => {
-  const initialState: AppState = {
+  const initialState: Pick<AppState, "comments"> = {
     comments: { comments: mockData },
   };
   beforeEach(() => {
