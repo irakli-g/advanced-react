@@ -1,22 +1,26 @@
 import { render, screen } from "@testing-library/react";
-import { Root } from "../../redux/Root";
+import { AppState, Root } from "../../redux/Root";
 import { CommentList } from "../";
 
+const mockData: CommentData[] = [
+  { id: 2, name: "comment one" },
+  { id: 3, name: "comment two" },
+  { id: 4, name: "comment three" },
+];
+
 describe("CommentList component", () => {
-  const initialState: CommentData[] = [
-    { id: 1, title: "Comment One" },
-    { id: 2, title: "comment two" },
-  ];
-  const data = {
-    comments: { comments: initialState },
+  const initialState: AppState = {
+    comments: { comments: mockData },
   };
-  render(
-    <Root initialState={data}>
-      <CommentList />
-    </Root>
-  );
-  test("should render comments", () => {
+  beforeEach(() => {
+    render(
+      <Root initialState={initialState}>
+        <CommentList />
+      </Root>
+    );
+  });
+  test("should render li elements when data is passed", () => {
     const comments = screen.getAllByRole("listitem");
-    expect(comments).toHaveLength(2);
+    expect(comments).toHaveLength(3);
   });
 });

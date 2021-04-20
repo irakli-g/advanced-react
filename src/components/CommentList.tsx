@@ -13,7 +13,7 @@ const CommentList: React.FC<Props> = ({ comments }) => {
       <ul>
         {comments.length > 0 &&
           comments.map((comment) => {
-            return <li key={comment.id}>{comment.title}</li>;
+            return <li key={comment.id}>{comment.name}</li>;
           })}
       </ul>
     </div>

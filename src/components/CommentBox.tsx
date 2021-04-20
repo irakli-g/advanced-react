@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addComment } from "../redux/actions/commentsActions";
+import * as actions from "../redux/actions/commentsActions";
+import { v4 } from "uuid";
 
 interface Props {
   addComment: (comment: CommentData) => void;
+  fetchComments: () => void;
 }
 
-const CommentBox: React.FC<Props> = ({ addComment }) => {
+const CommentBox: React.FC<Props> = ({ addComment, fetchComments }) => {
   const [text, setText] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    addComment({ id: v4(), name: text });
     setText("");
   };
   return (
@@ -29,14 +32,16 @@ const CommentBox: React.FC<Props> = ({ addComment }) => {
         ></textarea>
         <button type="submit">Submit Comment</button>
       </form>
+      <button
+        type="button"
+        onClick={() => {
+          fetchComments();
+        }}
+      >
+        Fetch Comments
+      </button>
     </div>
   );
 };
 
-const mapDispatchToProps = () => {
-  return {
-    addComment,
-  };
-};
-
-export default connect(null, mapDispatchToProps)(CommentBox);
+export default connect(null, actions)(CommentBox);

@@ -1,9 +1,20 @@
-import { reduxStore } from "../Root";
+import axios from "axios";
+import { addCommentAction, fetchCommentsAction } from "./actionTypes";
 
-const store = reduxStore();
-
-const addComment = (comment: CommentData) => {
-  store.dispatch({ type: "ADD_COMMENT", payload: comment });
+export const addComment = (comment: CommentData): addCommentAction => {
+  return {
+    type: "ADD_COMMENT",
+    payload: comment,
+  };
 };
 
-export { addComment };
+export const fetchComments = (): fetchCommentsAction => {
+  const response = axios
+    .get("https://jsonplaceholder.typicode.com/comments")
+    .then(({ data }) => data);
+
+  return {
+    type: "FETCH_COMMENTS",
+    payload: (response as unknown) as CommentData[],
+  };
+};

@@ -1,25 +1,25 @@
 import React from "react";
 import { rootReducer } from "./reducers/rootReducer";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
+import reduxPromise from "redux-promise";
 
-// initialState is used only for testing purposes and has no connection the production code. It makes it possible to pass fake data to components through Root.
-// check CommentList.test.tsx line xxx as an example
-
-const reduxStore = (initialState?: any) => {
-  return createStore(rootReducer, initialState);
-};
+// initialState prop is used only for testing purposes and has no connection to production codebase.
+// It makes it possible to pass fake data through Root component. Check CommentList.test.tsx file for examples
 
 interface Props {
-  initialState?: any;
+  initialState?: Object;
 }
 
 const Root: React.FC<Props> = ({ children, initialState = {} }) => {
-  const store = reduxStore(initialState);
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={createStore(rootReducer, initialState, applyMiddleware(reduxPromise))}>
+      {children}
+    </Provider>
+  );
 };
 
 type AppState = ReturnType<typeof rootReducer>;
 
-export { Root, reduxStore };
+export { Root };
 export type { AppState };

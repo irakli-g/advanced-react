@@ -3,6 +3,11 @@ interface addCommentAction {
   payload: CommentData;
 }
 
-type CommentsActions = addCommentAction;
+interface fetchCommentsAction {
+  type: "FETCH_COMMENTS";
+  payload: CommentData[];
+}
 
-export type { CommentsActions, addCommentAction };
+type CommentsActions = addCommentAction | fetchCommentsAction;
+
+export type { CommentsActions, addCommentAction, fetchCommentsAction };
