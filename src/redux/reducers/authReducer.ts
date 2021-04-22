@@ -1,5 +1,3 @@
-import { AuthActions } from "../actions/actionTypes";
-
 interface DefaultState {
   authenticated: boolean;
 }
@@ -13,6 +11,12 @@ const authReducer = (state = defaultState, action: AuthActions): DefaultState =>
     return {
       ...state,
       authenticated: action.payload,
+    };
+  }
+  if (action.type === "WARN_USER") {
+    window.alert(action.payload);
+    return {
+      ...state,
     };
   }
   return {

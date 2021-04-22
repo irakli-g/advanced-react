@@ -1,5 +1,4 @@
 import { authReducer } from "../";
-import { switchAuthAction } from "../../actions/actionTypes";
 
 describe("authReducer", () => {
   test("should switch on auth", () => {

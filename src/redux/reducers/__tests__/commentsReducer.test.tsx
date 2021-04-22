@@ -1,5 +1,4 @@
 import { commentsReducer } from "../";
-import { addCommentAction, fetchCommentsAction } from "../../actions/actionTypes";
 
 const data: CommentData = { id: 1, name: "comment one" };
 const mockAPI: CommentData[] = [

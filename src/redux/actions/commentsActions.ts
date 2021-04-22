@@ -1,5 +1,4 @@
 import axios from "axios";
-import { addCommentAction, fetchCommentsAction } from "./actionTypes";
 
 export const addComment = (comment: CommentData): addCommentAction => {
   return {

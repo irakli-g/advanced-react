@@ -13,7 +13,7 @@ describe("commentList", () => {
       { wrapper: Root }
     );
   });
-  test("should fetch comments on a button click", async () => {
+  test("should fetch comments on a button click", async (done) => {
     const button = screen.getByRole("button", { name: /fetch comments/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent("Fetch Comments");
